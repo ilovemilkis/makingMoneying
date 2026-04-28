@@ -15,24 +15,40 @@ async def get_webpage():
         <title>재혁이에게 기부하기</title>
         <style>
             /* 1. 기본 스타일 */
-            body { font-family: 'Malgun Gothic', sans-serif; text-align: center; margin-top: 100px; background-color: #f0f2f5; }
-            #alert-box { 
+            body { 
+                font-family: 'Malgun Gothic', sans-serif; 
+                text-align: center; 
+                margin: 0; /* 💡 기본 여백을 없애야 테두리에 하얀 띠가 안 생깁니다 */
+                background-color: #f0f2f5; 
+        
+                /* 알림창을 화면 가운데로 오게 하기 위한 설정 */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; 
+    }
+    
+        #alert-box { 
                 font-size: 25px; font-weight: bold; color: #333; padding: 40px; 
-                border-radius: 20px; background-color: white; 
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1); display: inline-block;
+                border-radius: 20px; background-color: rgba(255, 255, 255, 0.9); /* 💡 반투명하게 해서 배경 사진이 살짝 보이게 */
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2); display: inline-block;
                 transition: all 0.3s ease-in-out;
-            }
-            .highlight { color: #e91e63; font-size: 50px; }
+    }
+    
+        .highlight { color: #e91e63; font-size: 50px; }
 
-            /* 2. 추가하신 사진 스타일 (스타일 태그 안에 잘 모아두었습니다) */
-            .my-photo {
-                width: 200px;           
-                border-radius: 50%;     
-                border: 5px solid white; 
-                box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
-                margin-bottom: 30px; /* 사진과 박스 사이가 너무 붙지 않게 띄워줍니다 */
-            }
-        </style>
+        /* 2. 꽉 차는 사진 스타일 */
+        .my-photo {
+            width: 100vw;       /* 가로를 화면에 꽉 차게 (100%) */
+            height: 100vh;      /* 세로를 화면에 꽉 차게 (100%) */
+            object-fit: cover;  /* 사진 비율이 찌그러지지 않으면서 꽉 채움 */
+            position: fixed;    /* 사진을 화면에 딱 고정시킴 */
+            top: 0;
+            left: 0;
+            z-index: -1;        /* 💡 다른 글씨나 박스보다 맨 뒤(배경)로 보냄 */
+    }
+    </style>
     </head>
     <body>
         <img src="https://item.kakaocdn.net/do/e74bc01f60f5ce6a015cec451ea9cc45339e41ce89b663315d96faecd7cfd11b" class="my-photo" alt="사진">
