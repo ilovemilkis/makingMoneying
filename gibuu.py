@@ -14,7 +14,8 @@ async def get_webpage():
         <meta charset="UTF-8">
         <title>재혁이에게 기부하기</title>
         <style>
-            body { font-family: 'Malgun Gothic', sans-serif; text-align: center; margin-top: 150px; background-color: #f0f2f5; }
+            /* 1. 기본 스타일 */
+            body { font-family: 'Malgun Gothic', sans-serif; text-align: center; margin-top: 100px; background-color: #f0f2f5; }
             #alert-box { 
                 font-size: 25px; font-weight: bold; color: #333; padding: 40px; 
                 border-radius: 20px; background-color: white; 
@@ -22,11 +23,25 @@ async def get_webpage():
                 transition: all 0.3s ease-in-out;
             }
             .highlight { color: #e91e63; font-size: 50px; }
+
+            /* 2. 추가하신 사진 스타일 (스타일 태그 안에 잘 모아두었습니다) */
+            .my-photo {
+                width: 200px;           
+                border-radius: 50%;     
+                border: 5px solid white; 
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+                margin-bottom: 30px; /* 사진과 박스 사이가 너무 붙지 않게 띄워줍니다 */
+            }
         </style>
     </head>
     <body>
+        <img src="https://item.kakaocdn.net/do/e74bc01f60f5ce6a015cec451ea9cc45339e41ce89b663315d96faecd7cfd11b" class="my-photo" alt="사진">
+
         <div id="alert-box">💸 신한은행 110-504-443616으로 원하는 금액을 입금해보세요!
         신기한 일이 생깁니다~</div>
+
+        <p> 무슨 일이 일어날까요 😛 </p>
+        
         <script>
             var wsProtocol = window.location.protocol === "https:" ? "wss://" : "ws://";
             var ws = new WebSocket(wsProtocol + window.location.host + "/ws");
@@ -38,7 +53,7 @@ async def get_webpage():
                 // 천 단위 콤마를 다시 찍어주는 기능 추가 (예: 22000 -> 22,000)
                 var formattedAmount = Number(data.amount).toLocaleString();
                 
-                box.innerHTML = "🎉 <b>" + data.senderName + "</b>님이 <br><span class='highlight'>" + formattedAmount + "원</span>을 입금하셨습니다!! 바보~";
+                box.innerHTML = "🎉 <b>" + data.senderName + "</b>님의 기부금 <br><span class='highlight'>" + formattedAmount + "원</span>은 제가 잘 먹겠습니다~";
                 
                 box.style.transform = "scale(1.1)";
                 setTimeout(() => box.style.transform = "scale(1)", 300);
