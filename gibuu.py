@@ -40,13 +40,13 @@ async def get_webpage():
 
         /* 2. 꽉 차는 사진 스타일 */
         .my-photo {
-            width: 100vw;       /* 가로를 화면에 꽉 차게 (100%) */
-            height: 100vh;      /* 세로를 화면에 꽉 차게 (100%) */
-            object-fit: cover;  /* 사진 비율이 찌그러지지 않으면서 꽉 채움 */
-            position: fixed;    /* 사진을 화면에 딱 고정시킴 */
-            top: 0;
-            left: 0;
-            z-index: -1;        /* 💡 다른 글씨나 박스보다 맨 뒤(배경)로 보냄 */
+        width: 100vw;       
+        height: 100vh;      /* 세로를 화면에 꽉 차게 (100%) */
+        object-fit: contain; /* 💡 사진이 잘리지 않고 화면 안에 다 들어오게 맞춤 */
+        position: fixed;    /* 사진을 화면에 딱 고정시킴 */
+        top: 0;
+        left: 0;
+        z-index: -1;        /* 다른 글씨나 박스보다 맨 뒤(배경)로 보냄 */
     }
     </style>
     </head>
